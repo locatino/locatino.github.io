@@ -24,7 +24,7 @@
 
 
 
-  <meta name="keywords" content="Hello-world," />
+  <meta name="keywords" content="java,shell," />
 
 
 
@@ -47,7 +47,7 @@
 
 
 
-  <title> Hello World // LOCATINO'S NOTES </title>
+  <title> 一个通用的java程序控制脚本 // LOCATINO'S NOTES </title>
 </head>
 
 <body>
@@ -150,7 +150,7 @@
           
           
             
-              Hello World
+              一个通用的java程序控制脚本
             
           
         </h1>
@@ -186,15 +186,9 @@
       
 
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>修改相应的参数就可以很方便的控制各类java程序。<br>将脚本置于bin目录下，<br>推荐目录格式:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62; application&#10;&#9;&#62; bin&#10;&#9;&#62; lib&#10;&#9;&#62; log&#10;&#9;&#62; conf</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/sh&#10;#-------------------------------------------------------------------&#10;# &#23450;&#20041;&#21464;&#37327;&#10;#-------------------------------------------------------------------&#10; &#10;libdir=../lib&#10;# &#27169;&#22359;&#21517;(&#31243;&#24207;&#30340;&#21807;&#19968;&#26631;&#35782;)&#10;MODEL_NAME=test&#10;# &#27169;&#22359;&#36816;&#34892;&#38656;&#35201;&#30340;lib&#10;MODEL_LIBS=`./stoc.sh $&#123;libdir&#125;`&#10;# &#36873;&#39033;(java&#21551;&#21160;&#21442;&#25968;)&#10;MODEL_OPTS=&#34;-Xmx128m -DConfig=../conf/db.xml -DtaskConfig=../conf/taskConfig.xml -Dlog4j.configuration=file:../conf/cmdcenter.log4j&#34;&#10;# &#36816;&#34892;&#31867;&#21517;(main&#20989;&#25968;&#25152;&#22312;&#31867;)&#10;MODEL_CLASS=&#34;com.locatino.server.TestServer&#34;&#10;# &#36816;&#34892;&#21442;&#25968;&#10;MODEL_VARS=&#34;0&#34;&#10;# &#21069;&#21488;/&#21518;&#21488;: 0-&#21069;&#21488;&#65292; 1-&#21518;&#21488;&#10;MODEL_DAEMON=1&#10;# &#26085;&#24535; &#39;&#38;-&#39;:&#34920;&#31034;&#20851;&#38381;&#26631;&#20934;&#36755;&#20986;&#26085;&#24535;&#10;MODEL_LOG=&#34;../log/error.log&#34;&#10;#-------------------------------------------------------------------&#10;# &#20197;&#19979;&#20869;&#23481;&#35831;&#19981;&#35201;&#20462;&#25913;&#10;#-------------------------------------------------------------------&#10;SLEEP_MIN=5&#10;# model info can be define here&#10;MODEL_SYMBOL=$&#123;MODEL_NAME&#125;&#10;GREP_KEY=&#34;Diname=&#34;$&#123;MODEL_SYMBOL&#125;&#10;# CLASSPATH can bu define here&#10;CLASSPATH=$&#123;MODEL_LIBS&#125;:.:$&#123;CLASSPATH&#125;&#10;#----------------------------------------------------------&#10;# function print usage&#10;#----------------------------------------------------------&#10;print_usage()&#10;&#123;&#10;echo &#34;&#34;&#10;echo &#34;\th|H|help|HELP             \tPrint help information.&#34;&#10;echo &#34;\tstart                     \tStart the $&#123;MODEL_NAME&#125; server.&#34;&#10;echo &#34;\tstop                      \tStop the $&#123;MODEL_NAME&#125; server.&#34;&#10;echo &#34;\tstatus                    \tStatus the $&#123;MODEL_NAME&#125; server.&#34;&#10;&#125;&#10;&#10;#-------------------------------------------------------------------&#10;# function model_start&#10;#-------------------------------------------------------------------&#10;model_start ()&#10;&#123;&#10;modelService_is_exist&#10;if [ $? -eq &#34;0&#34; ]&#10;then&#10;        echo &#34;$&#123;MODEL_NAME&#125; is running yet. pid $&#123;localServerId&#125;.&#34;&#10;        return 0&#10;else&#10;        if [ $MODEL_DAEMON = 0 ]&#10;        then&#10;                echo &#34;try to start $&#123;MODEL_NAME&#125; ... foreground&#34;&#10;                $JAVA_HOME/bin/java -$&#123;GREP_KEY&#125; -classpath $&#123;CLASSPATH&#125; $&#123;MODEL_OPTS&#125; $&#123;MODEL_CLASS&#125; $&#123;MODEL_VARS&#125;&#10;        else&#10;                echo &#34;try to start $&#123;MODEL_NAME&#125; ... backgroud&#34;&#10;                nohup $JAVA_HOME/bin/java -$&#123;GREP_KEY&#125; $&#123;MODEL_OPTS&#125; -classpath $&#123;CLASSPATH&#125; $&#123;MODEL_CLASS&#125; $&#123;MODEL_VARS&#125; 1&#62;&#38;- 2&#62;&#62;$&#123;MODEL_LOG&#125; &#38;&#10;                sleep $SLEEP_MIN&#10;                modelService_is_exist&#10;                if [ $? -eq &#34;0&#34; ]&#10;                then&#10;                        echo &#34;$&#123;MODEL_NAME&#125; is running now. pid $&#123;localServerId&#125;.&#34;&#10;                        return 0&#10;                else&#10;                        echo &#34;failed to start $&#123;MODEL_NAME&#125;! see the output log for more details.&#34;&#10;                        return 1&#10;                fi&#10;        fi&#10;fi&#10;&#125;&#10;#-------------------------------------------------------------------&#10;# function model_stop&#10;#-------------------------------------------------------------------&#10;model_stop()&#10;&#123;&#10;echo &#34;try to stop $&#123;MODEL_NAME&#125; ...&#34;&#10;modelService_is_exist&#10;if [ $? -eq 0 ]&#10;then&#10;/usr/bin/kill $&#123;localServerId&#125;&#10;if [ $? -ne 0 ]&#10;then&#10;echo &#34;failed to stop $&#123;MODEL_NAME&#125;!&#34;&#10;return 1&#10;else&#10;echo &#34;$&#123;MODEL_NAME&#125; stopped.&#34;&#10;return 0&#10;fi&#10;else&#10;echo &#34;$&#123;MODEL_NAME&#125; is not running!&#34;&#10;return 1&#10;fi&#10;&#125;&#10;#-------------------------------------------------------------------&#10;# function model_status&#10;#-------------------------------------------------------------------&#10;model_status()&#10;&#123;&#10;modelService_is_exist&#10;if [ $? -eq 0 ]&#10;then&#10;echo &#34;$&#123;MODEL_NAME&#125; is running. pid $&#123;localServerId&#125;.&#34;&#10;else&#10;echo &#34;$&#123;MODEL_NAME&#125; is not running.&#34;&#10;fi&#10;&#125;&#10;#-------------------------------------------------------------------&#10;#&#10;#-------------------------------------------------------------------&#10;#-------------------------------------------------------------------&#10;# function parse_para&#10;#-------------------------------------------------------------------&#10;parse_para()&#10;&#123;&#10;case &#34;$1&#34; in&#10;start) model_start;;&#10;stop) model_stop;;&#10;status) model_status;;&#10;*) echo &#34;illage parameter : $1&#34;;print_usage;;&#10;esac&#10;&#125;&#10;#-------------------------------------------------------------------&#10;# main&#10;#-------------------------------------------------------------------&#10;parse_para $1</span><br></pre></td></tr></table></figure>
+<p>下面是stoc.sh<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo `find $1 -name &#34;*.jar&#34;` | sed -e &#39;s/ /:/g&#39;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -203,7 +197,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hello-world/"> #Hello-world </a>
+            <a href="/tags/java/"> #java </a>
+          
+            <a href="/tags/shell/"> #shell </a>
           
         </div>
       
@@ -212,13 +208,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/29/一个通用的java程序控制脚本/">一个通用的java程序控制脚本</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/29/第一篇/">第一篇</a>
+              <a href="/2015/06/29/hello-world/">Hello World</a>
             
           </div>
         </div>
@@ -324,7 +318,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick_Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create_a_new_post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run_server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate_static_files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy_to_remote_sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目錄</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
