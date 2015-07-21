@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -177,14 +177,20 @@
       
 
       
-        <p><code>{python}datamap = eval(raw_input(&#39;Provide some data here: &#39;)</code>means that you actually evaluate the code before you deem it to be unsafe or not. It evaluates the code as soon as the function is called. See also the dangers of eval.</p>
-<p>ast.literal_eval raises an exception if the input isn’t a valid Python datatype, so the code won’t be executed if it’s not.</p>
-<p>Use ast.literal_eval whenever you need eval. If you have Python expressions as an input that you want to evaluate, you shouldn’t (have them).</p>
+        <p><code>datamap = eval(raw_input(&#39;Provide some data here: &#39;)</code> means that you actually evaluate the code before you deem it to be unsafe or not. It evaluates the code as soon as the function is called. See also the dangers of <code>eval</code>.</p>
+<p><code>ast.literal_eval</code> raises an exception if the input isn’t a valid Python datatype, so the code won’t be executed if it’s not.</p>
+<p><strong>Use <code>ast.literal_eval</code> whenever you need <code>eval</code>.</strong> If you have Python expressions as an input that you want to evaluate, you shouldn’t (have them).</p>
 
       
     </div>
 
     <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/"> #Python </a>
+          
+        </div>
       
 
       
@@ -273,7 +279,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
