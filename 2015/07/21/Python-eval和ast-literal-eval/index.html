@@ -190,7 +190,9 @@
       
         <p><code>datamap = eval(raw_input(&#39;Provide some data here: &#39;)</code> means that you actually evaluate the code before you deem it to be unsafe or not. It evaluates the code as soon as the function is called. See also the dangers of <code>eval</code>.</p>
 <p><code>ast.literal_eval</code> raises an exception if the input isn’t a valid Python datatype, so the code won’t be executed if it’s not.</p>
-<h2 id="Use_ast-literal_eval_whenever_you_need_eval-_If_you_have_Python_expressions_as_an_input_that_you_want_to_evaluate,_you_shouldn’t_(have_them)-"><strong>Use <code>ast.literal_eval</code> whenever you need <code>eval</code>.</strong> If you have Python expressions as an input that you want to evaluate, you shouldn’t (have them).</h2><p>简而言之一句话，<code>literal_eval</code>做了类型检查，如果参数无效的话就会报错，而<code>eval</code>不会。所以尽量使用<code>literal_eval</code>。</p>
+<p><strong>Use <code>ast.literal_eval</code> whenever you need <code>eval</code>.</strong> If you have Python expressions as an input that you want to evaluate, you shouldn’t (have them).</p>
+<hr>
+<p>简而言之一句话，<code>literal_eval</code>做了类型检查，如果参数无效的话就会报错，而<code>eval</code>不会。所以尽量使用<code>literal_eval</code>。</p>
 
       
     </div>
@@ -318,7 +320,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Use_ast-literal_eval_whenever_you_need_eval-_If_you_have_Python_expressions_as_an_input_that_you_want_to_evaluate,_you_shouldn’t_(have_them)-"><span class="nav-number">1.</span> <span class="nav-text">Use ast.literal_eval whenever you need eval. If you have Python expressions as an input that you want to evaluate, you shouldn’t (have them).</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目錄</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
