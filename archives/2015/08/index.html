@@ -49,13 +49,7 @@
 
 
 
-  <title>
-  
-
-  
-    標籤 // LOCATINO'S NOTES
-  
-</title>
+  <title> 歸檔 // LOCATINO'S NOTES </title>
 </head>
 
 <body>
@@ -69,7 +63,7 @@
   </div>
 <![endif]-->
 
-  <div class="container one-column ">
+  <div class="container one-column  page-archive ">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -146,19 +140,59 @@
         <div id="content" class="content">
           
 
-  <div id="posts" class="posts-expand">
+  <div id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+      
+        
+      
+      嗯..! 目前共計 6 篇文章。 繼續努力。
+    </span>
+
     
-    
-      <div class="tag-cloud">
-        <div class="tag-cloud-title">
-            目前共計 7 個標籤
+
+      
+      
+      
+
+      
+        
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
         </div>
-        <div class="tag-cloud-tags">
-          <a href="/tags/Functional-Programming/" style="font-size: 30px; color: #111">Functional Programming</a> <a href="/tags/Hello-world/" style="font-size: 12px; color: #ccc">Hello world</a> <a href="/tags/Java/" style="font-size: 12px; color: #ccc">Java</a> <a href="/tags/Operating-System/" style="font-size: 12px; color: #ccc">Operating System</a> <a href="/tags/Python/" style="font-size: 30px; color: #111">Python</a> <a href="/tags/Recommendation/" style="font-size: 12px; color: #ccc">Recommendation</a> <a href="/tags/Shell/" style="font-size: 12px; color: #ccc">Shell</a>
-        </div>
+      
+      
+
+      
+
+  <div class="post post-type-normal">
+    <div class="post-header">
+
+      <div class="post-title">
+        
+            <a class="post-title-link" href="/2015/08/03/playing-python-lambda/">
+              玩转Python Lambda
+            </a>
+        
       </div>
-    
+
+      <div class="post-meta">
+        <span class="post-time"> 08-03 </span>
+      </div>
+
+    </div>
   </div>
+
+
+
+    
+
+  </div>
+
+  
 
 
         </div>
@@ -270,6 +304,12 @@
 
   
   
+  
+    <script type="text/javascript">
+      postMotionOptions = {stagger: 100, drag: true};
+    </script>
+  
+
 
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
@@ -289,6 +329,12 @@
   <script type="text/javascript" src="/js/search-toggle.js"></script>
 
   
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
+
 
   <script type="text/javascript">
     $(document).ready(function () {

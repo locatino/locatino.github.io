@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="Functional Programming,Python," />
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-  <title> LOCATINO'S NOTES </title>
+  <title> 玩转Python Lambda // LOCATINO'S NOTES </title>
 </head>
 
 <body>
@@ -63,9 +63,7 @@
   </div>
 <![endif]-->
 
-  <div class="container one-column 
-   page-home 
-">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -141,9 +139,9 @@
       <div class="main-inner">
         <div id="content" class="content">
           
+
   <div id="posts" class="posts-expand">
     
-      
 
   <div class="post post-type-normal ">
     <div class="post-header">
@@ -154,9 +152,7 @@
           
           
             
-              <a class="post-title-link" href="/2015/08/03/playing-python-lambda/">
-                玩转Python Lambda
-              </a>
+              玩转Python Lambda
             
           
         </h1>
@@ -192,8 +188,7 @@
       
 
       
-        
-          <p>最近在学习函数式编程，又想顺便学下大名鼎鼎的Python，遂把The little scheme里的scheme代码全部用Python实现了一遍。<br>函数式编程的精髓当然是传说中的lambda表达式，本来打算用Python lambda实现scheme代码，没想到网上一查API，却发现Python lambda实在是做的弱到不行……不能缩进（一个lambda函数只能写在一行），只能用if…else…，只能写一条语句等等。</p>
+        <p>最近在学习函数式编程，又想顺便学下大名鼎鼎的Python，遂把The little scheme里的scheme代码全部用Python实现了一遍。<br>函数式编程的精髓当然是传说中的lambda表达式，本来打算用Python lambda实现scheme代码，没想到网上一查API，却发现Python lambda实在是做的弱到不行……不能缩进（一个lambda函数只能写在一行），只能用if…else…，只能写一条语句等等。</p>
 <blockquote>
 <p>“Why can’t lambda expressions contain statements?</p>
 <p>Python lambda expressions cannot contain statements because Python’s syntactic framework can’t handle statements nested inside expressions. However, in Python, this is not a serious problem. Unlike lambda forms in other languages, where they add functionality, Python lambdas are only a shorthand notation if you’re too lazy to define a function.</p>
@@ -225,402 +220,52 @@
 <p>这个g就是传说中的上古神器Y-Combinator！它就是一个通用的匿名函数递归公式。</p>
 <p>至此，我们已经把Python lambda的功能扩充的基本和普通函数差不多了（额，可能还差一点）。<br>而且所有函数全部一行完成，然而并没有什么卵用。</p>
 
-        
       
     </div>
 
     <div class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/Functional-Programming/"> #Functional Programming </a>
+          
+            <a href="/tags/Python/"> #Python </a>
+          
+        </div>
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/21/Python-eval和ast-literal-eval/">Python eval和ast.literal_eval</a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </div>
   </div>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/21/Python-eval和ast-literal-eval/">
-                Python eval和ast.literal_eval
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2015-07-21
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/Memo/">Memo</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
+      <div class="comments" id="comments">
         
       </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p><code>datamap = eval(raw_input(&#39;Provide some data here: &#39;)</code> means that you actually evaluate the code before you deem it to be unsafe or not. It evaluates the code as soon as the function is called. See also the dangers of <code>eval</code>.</p>
-<p><code>ast.literal_eval</code> raises an exception if the input isn’t a valid Python datatype, so the code won’t be executed if it’s not.</p>
-<p><strong>Use <code>ast.literal_eval</code> whenever you need <code>eval</code>.</strong> If you have Python expressions as an input that you want to evaluate, you shouldn’t (have them).</p>
-<hr>
-<p>简而言之一句话，<code>literal_eval</code>做了类型检查，如果参数无效的话就会报错，而<code>eval</code>不会。所以尽量使用<code>literal_eval</code>。</p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/06/The-Little-Book-of-Semaphores/">
-                The Little Book of Semaphores
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2015-07-06
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/Books/">Books</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p><img src="https://github.com/locatino/locatino.github.io/raw/master/images/book-the-little-book-of-semaphores.jpg" alt=""><br>本书教授了如何理解多线程执行和如何解决同步问题。尤其推荐给自学和初学者。<br>里面一步步教导读者解决一系列的经典和不那么经典的同步问题。内容非常有趣。<br>下载链接：<a href="http://www.greenteapress.com/semaphores/downey08semaphores.pdf" target="_blank" rel="external">http://www.greenteapress.com/semaphores/downey08semaphores.pdf</a></p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/01/极端编程主义/">
-                极端编程主义
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2015-07-01
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/Translation/">Translation</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <pre><code>函数（<span class="built_in">Function</span>）太棒了。如果我们创造一门只有函数的语言会如何？
-对象（<span class="built_in">Object</span>）太棒了。如果我们创造一门一切都是对象的语言会如何？
-惰性求值（Lazy evaluation）太棒了。如果我们创造一门所有类型都是惰性的语言会如何？
-</code></pre><p>极端主义编程（Extremist Programming, 与极限编程无关）是一种奉行某种思想（Principle），用它来衡量其他一切事物并将它应用在任何地方的行为。等到尘埃落定之后，人们通常会对着这种极端主义方式思考，“额，这确实很有趣，但是把X用在Y里明显不恰当。你需要换一种正确的方式来达到目的！”</p>
-<p>上面这段话的意思是：有时候你需要使用错误的工具工作，因为你并不知道用这工具是不是正确的。如果你不到处使用函数，你也许就不明白将一个函数作为另一个函数的参数有怎样的功效，也许就不明白Cheap Lambda表达式的意义。如果你不到处使用对象，你也许就不理解其实整型和类的实例其实都是对象。如果你不到处使用惰性求值，你也许就没意识到其实函数的纯粹性（Purity）其实是一种更加重要的语言特征。</p>
-<p>这就引出了两个建议：</p>
-<ol>
-<li><p>当学习一种新的思想时，尝试将它到处运用一番。这样你就可以很快的知道它什么时候适用什么时候不适用，即使你对它的第一印象全是错的。（另一方面，如果你没有进行这样错误的尝试的话，你将失去对它适用范围理解的机会。）</p>
-</li>
-<li><p>当试图理解某种思想的本质时，一个极端的例子是最清晰明了的。如果你想知道使用惰性求值编程是怎么样的，你会使用Haskell，而不是其他的非强制惰性求值的语言。即使这样极端的系统并不实用，但它确实能够更好的体现本质。</p>
-</li>
-</ol>
-<p>极端主义在很多场合并不恰当，但是对于那些有趣的，小巧的项目或者研究，它真的能够教会你许多。给我印象最深的一件事情就是我去年和Adam Chlipala的合作。当时我们用Coq进行一些证明，我用的是中规中矩的方式，先一步一步推导要证的雏形，然后使用Ltac自动证明。Adam告诉我：“你应该一开始就自动证明的，不用麻烦的做手工推导”。真是醍醐灌顶：我就是不够极端！</p>
-<pre><code>文件（<span class="keyword">File</span>）太棒了。如果我们创造一种一切都是文件的操作系统会如何？
-<span class="keyword">Cons</span>结构（<span class="keyword">Cons</span> cell）太棒了。如果我们创造一种一切都由<span class="keyword">Cons</span>组成的编程语言会如何？
-数学（Mathematics）太棒了。如果我们创造一种一切都是数学说了算的编程语言会如何？
-数组（Array）太棒了。如果我们创造一种一切都是数组的语言会如何？
-</code></pre><hr>
-<p>翻译 by locatino<br>原文链接<a href="http://blog.ezyang.com/2012/11/extremist-programming/" target="_blank" rel="external">http://blog.ezyang.com/2012/11/extremist-programming/</a></p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/06/29/一个通用的java程序控制脚本/">
-                一个通用的Java程序控制脚本
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2015-06-29
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/Memo/">Memo</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>修改相应的参数就可以很方便的控制各类Java程序。<br>将脚本置于bin目录下，<br>推荐目录格式:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62; application&#10;&#9;&#62; bin&#10;&#9;&#62; lib&#10;&#9;&#62; log&#10;&#9;&#62; conf</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/sh&#10;#-------------------------------------------------------------------&#10;# &#23450;&#20041;&#21464;&#37327;&#10;#-------------------------------------------------------------------&#10;&#10;libdir=../lib&#10;# &#27169;&#22359;&#21517;(&#31243;&#24207;&#30340;&#21807;&#19968;&#26631;&#35782;)&#10;MODEL_NAME=test&#10;# &#27169;&#22359;&#36816;&#34892;&#38656;&#35201;&#30340;lib&#10;MODEL_LIBS=`./stoc.sh $&#123;libdir&#125;`&#10;# &#36873;&#39033;(java&#21551;&#21160;&#21442;&#25968;)&#10;MODEL_OPTS=&#34;-Xmx128m -DConfig=../conf/db.xml -DtaskConfig=../conf/taskConfig.xml -Dlog4j.configuration=file:../conf/cmdcenter.log4j&#34;&#10;# &#36816;&#34892;&#31867;&#21517;(main&#20989;&#25968;&#25152;&#22312;&#31867;)&#10;MODEL_CLASS=&#34;com.locatino.server.TestServer&#34;&#10;# &#36816;&#34892;&#21442;&#25968;&#10;MODEL_VARS=&#34;0&#34;&#10;# &#21069;&#21488;/&#21518;&#21488;: 0-&#21069;&#21488;&#65292; 1-&#21518;&#21488;&#10;MODEL_DAEMON=1&#10;# &#26085;&#24535; &#39;&#38;-&#39;:&#34920;&#31034;&#20851;&#38381;&#26631;&#20934;&#36755;&#20986;&#26085;&#24535;&#10;MODEL_LOG=&#34;../log/error.log&#34;&#10;#-------------------------------------------------------------------&#10;# &#20197;&#19979;&#20869;&#23481;&#35831;&#19981;&#35201;&#20462;&#25913;&#10;#-------------------------------------------------------------------&#10;SLEEP_MIN=5&#10;# model info can be define here&#10;MODEL_SYMBOL=$&#123;MODEL_NAME&#125;&#10;GREP_KEY=&#34;Diname=&#34;$&#123;MODEL_SYMBOL&#125;&#10;# CLASSPATH can bu define here&#10;CLASSPATH=$&#123;MODEL_LIBS&#125;:.:$&#123;CLASSPATH&#125;&#10;#----------------------------------------------------------&#10;# function print usage&#10;#----------------------------------------------------------&#10;print_usage()&#10;&#123;&#10;echo &#34;&#34;&#10;echo &#34;\th|H|help|HELP             \tPrint help information.&#34;&#10;echo &#34;\tstart                     \tStart the $&#123;MODEL_NAME&#125; server.&#34;&#10;echo &#34;\tstop                      \tStop the $&#123;MODEL_NAME&#125; server.&#34;&#10;echo &#34;\tstatus                    \tStatus the $&#123;MODEL_NAME&#125; server.&#34;&#10;&#125;&#10;#-------------------------------------------------------------------&#10;# function model_is_exist&#10;#-------------------------------------------------------------------&#10;modelService_is_exist()&#10;&#123;&#10;localServerId=`ps -ef |grep &#34;$&#123;GREP_KEY&#125;&#34; | grep -v grep | awk &#39;&#123;print $2&#125;&#39;`&#10;if [ -z &#34;$&#123;localServerId&#125;&#34; ]&#10;then&#10;return 1&#10;else&#10;return 0&#10;fi&#10;&#125;&#10;#-------------------------------------------------------------------&#10;# function model_start&#10;#-------------------------------------------------------------------&#10;model_start ()&#10;&#123;&#10;modelService_is_exist&#10;if [ $? -eq &#34;0&#34; ]&#10;then&#10;        echo &#34;$&#123;MODEL_NAME&#125; is running yet. pid $&#123;localServerId&#125;.&#34;&#10;        return 0&#10;else&#10;        if [ $MODEL_DAEMON = 0 ]&#10;        then&#10;                echo &#34;try to start $&#123;MODEL_NAME&#125; ... foreground&#34;&#10;                $JAVA_HOME/bin/java -$&#123;GREP_KEY&#125; -classpath $&#123;CLASSPATH&#125; $&#123;MODEL_OPTS&#125; $&#123;MODEL_CLASS&#125; $&#123;MODEL_VARS&#125;&#10;        else&#10;                echo &#34;try to start $&#123;MODEL_NAME&#125; ... backgroud&#34;&#10;                nohup $JAVA_HOME/bin/java -$&#123;GREP_KEY&#125; $&#123;MODEL_OPTS&#125; -classpath $&#123;CLASSPATH&#125; $&#123;MODEL_CLASS&#125; $&#123;MODEL_VARS&#125; 1&#62;&#38;- 2&#62;&#62;$&#123;MODEL_LOG&#125; &#38;&#10;                sleep $SLEEP_MIN&#10;                modelService_is_exist&#10;                if [ $? -eq &#34;0&#34; ]&#10;                then&#10;                        echo &#34;$&#123;MODEL_NAME&#125; is running now. pid $&#123;localServerId&#125;.&#34;&#10;                        return 0&#10;                else&#10;                        echo &#34;failed to start $&#123;MODEL_NAME&#125;! see the output log for more details.&#34;&#10;                        return 1&#10;                fi&#10;        fi&#10;fi&#10;&#125;&#10;#-------------------------------------------------------------------&#10;# function model_stop&#10;#-------------------------------------------------------------------&#10;model_stop()&#10;&#123;&#10;echo &#34;try to stop $&#123;MODEL_NAME&#125; ...&#34;&#10;modelService_is_exist&#10;if [ $? -eq 0 ]&#10;then&#10;/usr/bin/kill $&#123;localServerId&#125;&#10;if [ $? -ne 0 ]&#10;then&#10;echo &#34;failed to stop $&#123;MODEL_NAME&#125;!&#34;&#10;return 1&#10;else&#10;echo &#34;$&#123;MODEL_NAME&#125; stopped.&#34;&#10;return 0&#10;fi&#10;else&#10;echo &#34;$&#123;MODEL_NAME&#125; is not running!&#34;&#10;return 1&#10;fi&#10;&#125;&#10;#-------------------------------------------------------------------&#10;# function model_status&#10;#-------------------------------------------------------------------&#10;model_status()&#10;&#123;&#10;modelService_is_exist&#10;if [ $? -eq 0 ]&#10;then&#10;echo &#34;$&#123;MODEL_NAME&#125; is running. pid $&#123;localServerId&#125;.&#34;&#10;else&#10;echo &#34;$&#123;MODEL_NAME&#125; is not running.&#34;&#10;fi&#10;&#125;&#10;#-------------------------------------------------------------------&#10;#&#10;#-------------------------------------------------------------------&#10;#-------------------------------------------------------------------&#10;# function parse_para&#10;#-------------------------------------------------------------------&#10;parse_para()&#10;&#123;&#10;case &#34;$1&#34; in&#10;start) model_start;;&#10;stop) model_stop;;&#10;status) model_status;;&#10;*) echo &#34;illage parameter : $1&#34;;print_usage;;&#10;esac&#10;&#125;&#10;#-------------------------------------------------------------------&#10;# main&#10;#-------------------------------------------------------------------&#10;parse_para $1</span><br></pre></td></tr></table></figure>
-<p>下面是stoc.sh<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo `find $1 -name &#34;*.jar&#34;` | sed -e &#39;s/ /:/g&#39;</span><br></pre></td></tr></table></figure></p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/06/29/第一篇/">
-                Hello world
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2015-06-29
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/NONSENSE/">NONSENSE</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>这是<strong>新的开始</strong>，我用hexo创建了第一篇文章。</p>
-<p>感觉非常好。</p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
     
   </div>
 
-  
 
         </div>
 
@@ -641,6 +286,15 @@
   <div id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
       
 
       <div class="site-overview">
@@ -688,6 +342,17 @@
         
       </div>
 
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目錄</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
       
 
     </div>
@@ -750,6 +415,145 @@
   <script type="text/javascript" src="/js/search-toggle.js"></script>
 
   
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
 
   <script type="text/javascript">
     $(document).ready(function () {
