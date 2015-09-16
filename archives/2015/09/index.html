@@ -49,7 +49,7 @@
 
 
 
-  <title> 標籤: Hello world // LOCATINO'S NOTES </title>
+  <title> 歸檔 // LOCATINO'S NOTES </title>
 </head>
 
 <body>
@@ -63,7 +63,7 @@
   </div>
 <![endif]-->
 
-  <div class="container one-column ">
+  <div class="container one-column  page-archive ">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -141,14 +141,31 @@
           
 
   <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Hello world
-        <small>標籤</small>
-      </h2>
-    </div>
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+      
+        
+      
+      嗯..! 目前共計 8 篇文章。 繼續努力。
+    </span>
 
     
+
+      
+      
+      
+
+      
+        
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
+        </div>
+      
+      
+
       
 
   <div class="post post-type-normal">
@@ -156,24 +173,27 @@
 
       <div class="post-title">
         
-            <a class="post-title-link" href="/2015/06/29/第一篇/">
-              Hello world
+            <a class="post-title-link" href="/2015/09/16/关于《理想国》/">
+              关于《理想国》
             </a>
         
       </div>
 
       <div class="post-meta">
-        <span class="post-time"> 06-29 </span>
+        <span class="post-time"> 09-16 </span>
       </div>
 
     </div>
   </div>
 
 
+
     
+
   </div>
 
   
+
 
         </div>
 
@@ -309,6 +329,12 @@
   <script type="text/javascript" src="/js/search-toggle.js"></script>
 
   
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
+
 
   <script type="text/javascript">
     $(document).ready(function () {
