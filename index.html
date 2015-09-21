@@ -154,6 +154,126 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/21/stack-over-flow-1/">
+                Stack Overflow经典问题选讲
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-09-21
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/MEMO/">MEMO</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="Question">Question</h2><p>下面是一段非常神奇的<strong>C++</strong>代码。因为一些莫名其妙的原因，处理排序后的数据比没有排序的数据奇迹般的快了许多倍。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;algorithm&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;ctime&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">// Generate data</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">unsigned</span> arraySize = <span class="number">32768</span>;</span><br><span class="line">    <span class="keyword">int</span> data[arraySize];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">unsigned</span> c = <span class="number">0</span>; c &lt; arraySize; ++c)</span><br><span class="line">        data[c] = <span class="built_in">std</span>::rand() % <span class="number">256</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// !!! With this, the next loop runs faster</span></span><br><span class="line">    <span class="built_in">std</span>::sort(data, data + arraySize);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Test</span></span><br><span class="line">    <span class="keyword">clock_t</span> start = clock();</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">unsigned</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Primary loop</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">unsigned</span> c = <span class="number">0</span>; c &lt; arraySize; ++c)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (data[c] &gt;= <span class="number">128</span>)</span><br><span class="line">                sum += data[c];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> elapsedTime = <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(clock() - start) / CLOCKS_PER_SEC;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; elapsedTime &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"sum = "</span> &lt;&lt; sum &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>没有<code>std::sort(data, data + arraySize);</code>这句代码，程序运行了<strong>11.54</strong>秒。</li>
+<li>有上述那句代码，程序运行了<strong>1.93</strong>秒。</li>
+</ul>
+<p>最开始，我以为这只是特定语言或者编译器的反常现象。所以我在<strong>Java</strong>里也试了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="comment">// Generate data</span></span><br><span class="line">        <span class="keyword">int</span> arraySize = <span class="number">32768</span>;</span><br><span class="line">        <span class="keyword">int</span> data[] = <span class="keyword">new</span> <span class="keyword">int</span>[arraySize];</span><br><span class="line"></span><br><span class="line">        Random rnd = <span class="keyword">new</span> Random(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; arraySize; ++c)</span><br><span class="line">            data[c] = rnd.nextInt() % <span class="number">256</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// !!! With this, the next loop runs faster</span></span><br><span class="line">        Arrays.sort(data);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Test</span></span><br><span class="line">        <span class="keyword">long</span> start = System.nanoTime();</span><br><span class="line">        <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Primary loop</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; arraySize; ++c)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (data[c] &gt;= <span class="number">128</span>)</span><br><span class="line">                    sum += data[c];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println((System.nanoTime() - start) / <span class="number">1000000000.0</span>);</span><br><span class="line">        System.out.println(<span class="string">"sum = "</span> + sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>结果也类似，只不过速度差异没有那么夸张。<br>我最初以为是因为排序把数据带入了高速缓存里，但马上就发现这个想法多么愚蠢，因为数组是运行时生成的。</p>
+<ul>
+<li>发生了什么事？</li>
+<li>为什么排序后的数组比没有排序的数组处理起来快？</li>
+<li>代码仅仅把数据元素单独的相加，数据元的顺序应该没有影响才对。</li>
+</ul>
+<hr>
+<p><br></p>
+<h2 id="Answer">Answer</h2><p>你是<a href="https://en.wikipedia.org/wiki/Branch_predictor" target="_blank" rel="external">分支预测</a>(branch prediction)失败的受害者。</p>
+<hr>
+<h2 id="什么是分支预测？">什么是分支预测？</h2><p>请参考下图铁轨分岔路：<br><img src="http://i.stack.imgur.com/muxnt.jpg" alt="train_pic"><br>为了方便说明这个程序问题，假设我们回到了1800年代——在无线电或者其他长距离通信方式发明之前。<br>你是一名操作员，你听到了一辆火车正在驶来。你不知道它要走哪个方向。你停下了火车去问列车长他要走哪个方向。然后你正确地设置了分岔口的开关。<br><br><br><em>火车重，并且惯性大。所以它们启动和停下需要花费大量的时间。</em><br><br><br>那有没有更好的方式？你来猜火车会走哪条路！</p>
+<ul>
+<li>如果你猜对了，火车就继续走。</li>
+<li>如果你猜错了，那列车长会停车，退回，训斥你重新操作分岔开关。然后火车重新驶向另一条路。</li>
+</ul>
+<p><strong>如果你每次都猜对，</strong>火车将永远不用停下来。</p>
+<p><strong>如果你老是猜错，</strong>火车将会花费大量的时间停下来，退回，重启。</p>
+<hr>
+<p><strong>观察下列if语句：</strong>在处理器层面上，它是一条分支指令：<br><img src="http://i.stack.imgur.com/pyfwC.png" alt="branch_instruction"><br>假设你是一个处理器并且你发现了一个分支指令。你不知道接下来会执行哪条指令。你怎么办？你挂起了程序，等待之前的指令执行完毕。然后你顺着正确的分支继续执行。<br><br><br><em>现代处理器结构复杂并且拥有长流水线。所以它们启动和停止需要花费大量的时间。</em><br><br><br>那有没有更好的方式？你来猜接下来会执行哪条分支！</p>
+<ul>
+<li>如果你猜对了，你就继续执行。</li>
+<li>如果你猜错了，你需要刷新指令流水线并回退到分支语句。然后你重新执行正确地分支。</li>
+</ul>
+<p><strong>如果你每次都猜对，</strong>执行将永远不用停止。<br><strong>如果你老是猜错，</strong>你将花费大量的时间停止，回退，重启。</p>
+<hr>
+<p>这就是分支预测。我承认上面的比喻不是最合适的，因为火车只需要打一面标识行进方向的旗子就可以了。但是计算机里，处理器不到最后一刻是不会知道该进入哪条分支的。<br>所以你该如何选择猜测方案来最小化火车回退重启的次数呢？你观察之前的历史！如果火车99%的情况下走左边，那么你就猜左。反之，你就猜右。如果它每三次就走其中某个特定的方向，你就猜它接下来也是这样……<br><strong>换句话说，你试图找出一个模式并遵循它。</strong>这差不多就是分支预测器的工作方式。<br>大部分应用都有可良好预测的分支。所以现代分支预测器差不多可以达到&gt;90%的命中率。但是当面临无可预测的分支并且毫无规律可循的情况下，分支预测器基本上形同虚设。</p>
+<p>深入阅读：<a href="http://en.wikipedia.org/wiki/Branch_predictor" target="_blank" rel="external">“Branch predictor” article on Wikipedia</a>。</p>
+<hr>
+<h2 id="根据以上所说，罪魁祸首就是这条if语句">根据以上所说，罪魁祸首就是这条if语句</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (data[c] &gt;= <span class="number">128</span>)</span><br><span class="line">	sum += data[c];</span><br></pre></td></tr></table></figure>
+<p>注意到数据是均匀的分布在0到255之间。所以当数据从小到大排序之后，差不多前部分有一半的数据没有进入if语句的分支里。之后，剩下的数据全部进入if语句的分支里。<br>这对分支预测器是十分友好的，因为程序会连续的进入同一分支多次。一个简单的饱和计数器都可以正确的预测分支，除了刚好程序转向时的那几次失败。</p>
+<h3 id="简单视图化">简单视图化</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">T</span> = branch taken</span><br><span class="line">N = branch not taken</span><br><span class="line"></span><br><span class="line">data[] = <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="keyword">...</span> <span class="number">126</span>, <span class="number">127</span>, <span class="number">128</span>, <span class="number">129</span>, <span class="number">130</span>, <span class="keyword">...</span> <span class="number">250</span>, <span class="number">251</span>, <span class="number">252</span>, <span class="keyword">...</span></span><br><span class="line">branch = N  N  N  N  N  <span class="keyword">...</span>   N    N    <span class="literal">T</span>    <span class="literal">T</span>    <span class="literal">T</span>  <span class="keyword">...</span>   <span class="literal">T</span>    <span class="literal">T</span>    <span class="literal">T</span>  <span class="keyword">...</span></span><br><span class="line"></span><br><span class="line">       = NNNNNNNNNNNN <span class="keyword">...</span> NNNNNNNTTTTTTTTT <span class="keyword">...</span> TTTTTTTTTT  (easy to predict)</span><br></pre></td></tr></table></figure>
+<p>然而，当数据完全随机，分支预测器毫无用处因为它无法预测随机数据。因此，大概有50%的错误预测。<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data[] = <span class="number">226</span>, <span class="number">185</span>, <span class="number">125</span>, <span class="number">158</span>, <span class="number">198</span>, <span class="number">144</span>, <span class="number">217</span>, <span class="number">79</span>, <span class="number">202</span>, <span class="number">118</span>,  <span class="number">14</span>, <span class="number">150</span>, <span class="number">177</span>, <span class="number">182</span>, <span class="number">133</span>, <span class="keyword">...</span></span><br><span class="line">branch =   <span class="literal">T</span>,   <span class="literal">T</span>,   N,   <span class="literal">T</span>,   <span class="literal">T</span>,   <span class="literal">T</span>,   <span class="literal">T</span>,  N,   <span class="literal">T</span>,   N,   N,   <span class="literal">T</span>,   <span class="literal">T</span>,   <span class="literal">T</span>,   N  <span class="keyword">...</span></span><br><span class="line"></span><br><span class="line">       = TTNTTTTNTNNTTTN <span class="keyword">...</span>   (completely random - hard to predict)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="所以应该如何是好？">所以应该如何是好？</h3><p>如果编译器没法把分支优化成可良好预测，你可以用一些技巧优化，如果你愿意为性能牺牲可读性的话。<br>将：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (data[c] &gt;= <span class="number">128</span>)</span><br><span class="line">    sum += data[c];</span><br></pre></td></tr></table></figure></p>
+<p>替换为：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> t = (data[c] - <span class="number">128</span>) &gt;&gt; <span class="number">31</span>;</span><br><span class="line">sum += ~t &amp; data[c];</span><br></pre></td></tr></table></figure></p>
+<p>这样就用一些位操作消除了分支。（上述方法并不等价于原来的if语句。仅仅是在这个例子中跟原来的if语句效果一样。）</p>
+<h3 id="测试环境：Core_i7_920_@_3-5_GHz">测试环境：Core i7 920 @ 3.5 GHz</h3><p><code>C++ - Visual Studio 2010 - x64 Release</code><br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//  Branch - Random</span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">11.777</span></span><br><span class="line"><span class="comment"></span><br><span class="line">//  Branch - Sorted</span></span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">2.352</span></span><br><span class="line"><span class="comment"></span><br><span class="line">//  Branchless - Random</span></span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">2.564</span></span><br><span class="line"><span class="comment"></span><br><span class="line">//  Branchless - Sorted</span></span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">2.587</span></span><br></pre></td></tr></table></figure></p>
+<p><code>Java - Netbeans 7.1.1 JDK 7 - x64</code><br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//  Branch - Random</span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">10.93293813</span></span><br><span class="line"><span class="comment"></span><br><span class="line">//  Branch - Sorted</span></span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">5.643797077</span></span><br><span class="line"><span class="comment"></span><br><span class="line">//  Branchless - Random</span></span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">3.113581453</span></span><br><span class="line"><span class="comment"></span><br><span class="line">//  Branchless - Sorted</span></span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">3.186068823</span></span><br></pre></td></tr></table></figure></p>
+<p>观测结果：</p>
+<ul>
+<li>使用分支语句：排序和未排序的数据处理效率差异巨大。</li>
+<li>消除分支语句：排序和未排序的数据没有区别。</li>
+<li>使用C++时，消除分支语句的执行速度是比使用分支处理排序后的数据的速度慢一点的。</li>
+</ul>
+<p>所以一般的最佳做法是避免在重要的循环中使用依赖数据特性的分支。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/16/关于《理想国》/">
                 关于《理想国》
               </a>
@@ -794,21 +914,21 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">分類</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

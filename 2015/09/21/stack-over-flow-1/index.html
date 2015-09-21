@@ -1,0 +1,599 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="“大多数人按照我们所安排的路线生活，害怕探索其它路线，但也会有一些人，他们并不满足于被设定的生活轨迹，冲破我们设置的重重阻碍，意识到自由意志是天赐之物的人，才明白只有在奋力抗争后才知道如何善用之。”" />
+
+
+
+  <meta name="keywords" content="Stack Overflow," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+
+
+  <title> Stack Overflow经典问题选讲 // LOCATINO'S NOTES </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">LOCATINO'S NOTES</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            <i class="menu-item-icon icon-about"></i> <br />
+            關於
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Stack Overflow经典问题选讲
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-09-21
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/MEMO/">MEMO</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h2 id="Question">Question</h2><p>下面是一段非常神奇的<strong>C++</strong>代码。因为一些莫名其妙的原因，处理排序后的数据比没有排序的数据奇迹般的快了许多倍。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;algorithm&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;ctime&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">// Generate data</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">unsigned</span> arraySize = <span class="number">32768</span>;</span><br><span class="line">    <span class="keyword">int</span> data[arraySize];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">unsigned</span> c = <span class="number">0</span>; c &lt; arraySize; ++c)</span><br><span class="line">        data[c] = <span class="built_in">std</span>::rand() % <span class="number">256</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// !!! With this, the next loop runs faster</span></span><br><span class="line">    <span class="built_in">std</span>::sort(data, data + arraySize);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Test</span></span><br><span class="line">    <span class="keyword">clock_t</span> start = clock();</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">unsigned</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Primary loop</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">unsigned</span> c = <span class="number">0</span>; c &lt; arraySize; ++c)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (data[c] &gt;= <span class="number">128</span>)</span><br><span class="line">                sum += data[c];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> elapsedTime = <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(clock() - start) / CLOCKS_PER_SEC;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; elapsedTime &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"sum = "</span> &lt;&lt; sum &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>没有<code>std::sort(data, data + arraySize);</code>这句代码，程序运行了<strong>11.54</strong>秒。</li>
+<li>有上述那句代码，程序运行了<strong>1.93</strong>秒。</li>
+</ul>
+<p>最开始，我以为这只是特定语言或者编译器的反常现象。所以我在<strong>Java</strong>里也试了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="comment">// Generate data</span></span><br><span class="line">        <span class="keyword">int</span> arraySize = <span class="number">32768</span>;</span><br><span class="line">        <span class="keyword">int</span> data[] = <span class="keyword">new</span> <span class="keyword">int</span>[arraySize];</span><br><span class="line"></span><br><span class="line">        Random rnd = <span class="keyword">new</span> Random(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; arraySize; ++c)</span><br><span class="line">            data[c] = rnd.nextInt() % <span class="number">256</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// !!! With this, the next loop runs faster</span></span><br><span class="line">        Arrays.sort(data);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Test</span></span><br><span class="line">        <span class="keyword">long</span> start = System.nanoTime();</span><br><span class="line">        <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Primary loop</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; arraySize; ++c)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (data[c] &gt;= <span class="number">128</span>)</span><br><span class="line">                    sum += data[c];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println((System.nanoTime() - start) / <span class="number">1000000000.0</span>);</span><br><span class="line">        System.out.println(<span class="string">"sum = "</span> + sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>结果也类似，只不过速度差异没有那么夸张。<br>我最初以为是因为排序把数据带入了高速缓存里，但马上就发现这个想法多么愚蠢，因为数组是运行时生成的。</p>
+<ul>
+<li>发生了什么事？</li>
+<li>为什么排序后的数组比没有排序的数组处理起来快？</li>
+<li>代码仅仅把数据元素单独的相加，数据元的顺序应该没有影响才对。</li>
+</ul>
+<hr>
+<p><br></p>
+<h2 id="Answer">Answer</h2><p>你是<a href="https://en.wikipedia.org/wiki/Branch_predictor" target="_blank" rel="external">分支预测</a>(branch prediction)失败的受害者。</p>
+<hr>
+<h2 id="什么是分支预测？">什么是分支预测？</h2><p>请参考下图铁轨分岔路：<br><img src="http://i.stack.imgur.com/muxnt.jpg" alt="train_pic"><br>为了方便说明这个程序问题，假设我们回到了1800年代——在无线电或者其他长距离通信方式发明之前。<br>你是一名操作员，你听到了一辆火车正在驶来。你不知道它要走哪个方向。你停下了火车去问列车长他要走哪个方向。然后你正确地设置了分岔口的开关。<br><br><br><em>火车重，并且惯性大。所以它们启动和停下需要花费大量的时间。</em><br><br><br>那有没有更好的方式？你来猜火车会走哪条路！</p>
+<ul>
+<li>如果你猜对了，火车就继续走。</li>
+<li>如果你猜错了，那列车长会停车，退回，训斥你重新操作分岔开关。然后火车重新驶向另一条路。</li>
+</ul>
+<p><strong>如果你每次都猜对，</strong>火车将永远不用停下来。</p>
+<p><strong>如果你老是猜错，</strong>火车将会花费大量的时间停下来，退回，重启。</p>
+<hr>
+<p><strong>观察下列if语句：</strong>在处理器层面上，它是一条分支指令：<br><img src="http://i.stack.imgur.com/pyfwC.png" alt="branch_instruction"><br>假设你是一个处理器并且你发现了一个分支指令。你不知道接下来会执行哪条指令。你怎么办？你挂起了程序，等待之前的指令执行完毕。然后你顺着正确的分支继续执行。<br><br><br><em>现代处理器结构复杂并且拥有长流水线。所以它们启动和停止需要花费大量的时间。</em><br><br><br>那有没有更好的方式？你来猜接下来会执行哪条分支！</p>
+<ul>
+<li>如果你猜对了，你就继续执行。</li>
+<li>如果你猜错了，你需要刷新指令流水线并回退到分支语句。然后你重新执行正确地分支。</li>
+</ul>
+<p><strong>如果你每次都猜对，</strong>执行将永远不用停止。<br><strong>如果你老是猜错，</strong>你将花费大量的时间停止，回退，重启。</p>
+<hr>
+<p>这就是分支预测。我承认上面的比喻不是最合适的，因为火车只需要打一面标识行进方向的旗子就可以了。但是计算机里，处理器不到最后一刻是不会知道该进入哪条分支的。<br>所以你该如何选择猜测方案来最小化火车回退重启的次数呢？你观察之前的历史！如果火车99%的情况下走左边，那么你就猜左。反之，你就猜右。如果它每三次就走其中某个特定的方向，你就猜它接下来也是这样……<br><strong>换句话说，你试图找出一个模式并遵循它。</strong>这差不多就是分支预测器的工作方式。<br>大部分应用都有可良好预测的分支。所以现代分支预测器差不多可以达到&gt;90%的命中率。但是当面临无可预测的分支并且毫无规律可循的情况下，分支预测器基本上形同虚设。</p>
+<p>深入阅读：<a href="http://en.wikipedia.org/wiki/Branch_predictor" target="_blank" rel="external">“Branch predictor” article on Wikipedia</a>。</p>
+<hr>
+<h2 id="根据以上所说，罪魁祸首就是这条if语句">根据以上所说，罪魁祸首就是这条if语句</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (data[c] &gt;= <span class="number">128</span>)</span><br><span class="line">	sum += data[c];</span><br></pre></td></tr></table></figure>
+<p>注意到数据是均匀的分布在0到255之间。所以当数据从小到大排序之后，差不多前部分有一半的数据没有进入if语句的分支里。之后，剩下的数据全部进入if语句的分支里。<br>这对分支预测器是十分友好的，因为程序会连续的进入同一分支多次。一个简单的饱和计数器都可以正确的预测分支，除了刚好程序转向时的那几次失败。</p>
+<h3 id="简单视图化">简单视图化</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">T</span> = branch taken</span><br><span class="line">N = branch not taken</span><br><span class="line"></span><br><span class="line">data[] = <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="keyword">...</span> <span class="number">126</span>, <span class="number">127</span>, <span class="number">128</span>, <span class="number">129</span>, <span class="number">130</span>, <span class="keyword">...</span> <span class="number">250</span>, <span class="number">251</span>, <span class="number">252</span>, <span class="keyword">...</span></span><br><span class="line">branch = N  N  N  N  N  <span class="keyword">...</span>   N    N    <span class="literal">T</span>    <span class="literal">T</span>    <span class="literal">T</span>  <span class="keyword">...</span>   <span class="literal">T</span>    <span class="literal">T</span>    <span class="literal">T</span>  <span class="keyword">...</span></span><br><span class="line"></span><br><span class="line">       = NNNNNNNNNNNN <span class="keyword">...</span> NNNNNNNTTTTTTTTT <span class="keyword">...</span> TTTTTTTTTT  (easy to predict)</span><br></pre></td></tr></table></figure>
+<p>然而，当数据完全随机，分支预测器毫无用处因为它无法预测随机数据。因此，大概有50%的错误预测。<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data[] = <span class="number">226</span>, <span class="number">185</span>, <span class="number">125</span>, <span class="number">158</span>, <span class="number">198</span>, <span class="number">144</span>, <span class="number">217</span>, <span class="number">79</span>, <span class="number">202</span>, <span class="number">118</span>,  <span class="number">14</span>, <span class="number">150</span>, <span class="number">177</span>, <span class="number">182</span>, <span class="number">133</span>, <span class="keyword">...</span></span><br><span class="line">branch =   <span class="literal">T</span>,   <span class="literal">T</span>,   N,   <span class="literal">T</span>,   <span class="literal">T</span>,   <span class="literal">T</span>,   <span class="literal">T</span>,  N,   <span class="literal">T</span>,   N,   N,   <span class="literal">T</span>,   <span class="literal">T</span>,   <span class="literal">T</span>,   N  <span class="keyword">...</span></span><br><span class="line"></span><br><span class="line">       = TTNTTTTNTNNTTTN <span class="keyword">...</span>   (completely random - hard to predict)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="所以应该如何是好？">所以应该如何是好？</h3><p>如果编译器没法把分支优化成可良好预测，你可以用一些技巧优化，如果你愿意为性能牺牲可读性的话。<br>将：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (data[c] &gt;= <span class="number">128</span>)</span><br><span class="line">    sum += data[c];</span><br></pre></td></tr></table></figure></p>
+<p>替换为：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> t = (data[c] - <span class="number">128</span>) &gt;&gt; <span class="number">31</span>;</span><br><span class="line">sum += ~t &amp; data[c];</span><br></pre></td></tr></table></figure></p>
+<p>这样就用一些位操作消除了分支。（上述方法并不等价于原来的if语句。仅仅是在这个例子中跟原来的if语句效果一样。）</p>
+<h3 id="测试环境：Core_i7_920_@_3-5_GHz">测试环境：Core i7 920 @ 3.5 GHz</h3><p><code>C++ - Visual Studio 2010 - x64 Release</code><br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//  Branch - Random</span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">11.777</span></span><br><span class="line"><span class="comment"></span><br><span class="line">//  Branch - Sorted</span></span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">2.352</span></span><br><span class="line"><span class="comment"></span><br><span class="line">//  Branchless - Random</span></span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">2.564</span></span><br><span class="line"><span class="comment"></span><br><span class="line">//  Branchless - Sorted</span></span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">2.587</span></span><br></pre></td></tr></table></figure></p>
+<p><code>Java - Netbeans 7.1.1 JDK 7 - x64</code><br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//  Branch - Random</span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">10.93293813</span></span><br><span class="line"><span class="comment"></span><br><span class="line">//  Branch - Sorted</span></span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">5.643797077</span></span><br><span class="line"><span class="comment"></span><br><span class="line">//  Branchless - Random</span></span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">3.113581453</span></span><br><span class="line"><span class="comment"></span><br><span class="line">//  Branchless - Sorted</span></span><br><span class="line"><span class="built_in">seconds</span> = <span class="number">3.186068823</span></span><br></pre></td></tr></table></figure></p>
+<p>观测结果：</p>
+<ul>
+<li>使用分支语句：排序和未排序的数据处理效率差异巨大。</li>
+<li>消除分支语句：排序和未排序的数据没有区别。</li>
+<li>使用C++时，消除分支语句的执行速度是比使用分支处理排序后的数据的速度慢一点的。</li>
+</ul>
+<p>所以一般的最佳做法是避免在重要的循环中使用依赖数据特性的分支。</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Stack-Overflow/"> #Stack Overflow </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/16/关于《理想国》/">关于《理想国》</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+
+    
+      <div class="comments" id="comments">
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="locatino" />
+          <p class="site-author-name">locatino</p>
+        </div>
+        <p class="site-description motion-element">“大多数人按照我们所安排的路线生活，害怕探索其它路线，但也会有一些人，他们并不满足于被设定的生活轨迹，冲破我们设置的重重阻碍，意识到自由意志是天赐之物的人，才明白只有在奋力抗争后才知道如何善用之。”</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">分類</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">標籤</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+        
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Question"><span class="nav-number">1.</span> <span class="nav-text">Question</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Answer"><span class="nav-number">2.</span> <span class="nav-text">Answer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是分支预测？"><span class="nav-number">3.</span> <span class="nav-text">什么是分支预测？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据以上所说，罪魁祸首就是这条if语句"><span class="nav-number">4.</span> <span class="nav-text">根据以上所说，罪魁祸首就是这条if语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单视图化"><span class="nav-number">4.1.</span> <span class="nav-text">简单视图化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所以应该如何是好？"><span class="nav-number">4.2.</span> <span class="nav-text">所以应该如何是好？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试环境：Core_i7_920_@_3-5_GHz"><span class="nav-number">4.3.</span> <span class="nav-text">测试环境：Core i7 920 @ 3.5 GHz</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">locatino</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+  
+
+  
+
+
+
+
+  
+  
+
+</body>
+</html>
