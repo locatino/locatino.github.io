@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最近在学习函数式编程，又想顺便学下大名鼎鼎的Python ，遂把The little schemer里的scheme代码全部用Python实现了一遍。函数式编程的精髓当然是传说中的lambda表达式，本来打算用Python lambda实现scheme代码，没想到网上一查API，却发现Python lambda实在是做的弱到不行……不能缩进（一个lambda函数只能写在一行），只能用if…else">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玩转Python Lambda">
+<meta property="og:url" content="http://example.com/2015/08/03/%E7%8E%A9%E8%BD%ACPython-Lambda/index.html">
+<meta property="og:site_name" content="LOCATINO&#39;S NOTE">
+<meta property="og:description" content="最近在学习函数式编程，又想顺便学下大名鼎鼎的Python ，遂把The little schemer里的scheme代码全部用Python实现了一遍。函数式编程的精髓当然是传说中的lambda表达式，本来打算用Python lambda实现scheme代码，没想到网上一查API，却发现Python lambda实在是做的弱到不行……不能缩进（一个lambda函数只能写在一行），只能用if…else">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2015-08-03T08:28:01.000Z">
+<meta property="article:modified_time" content="2022-08-31T12:12:18.799Z">
+<meta property="article:author" content="Locatino">
+<meta property="article:tag" content="Functional Programming">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2015/08/03/%E7%8E%A9%E8%BD%ACPython-Lambda/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>玩转Python Lambda | LOCATINO'S NOTE</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">LOCATINO'S NOTE</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2015/08/03/%E7%8E%A9%E8%BD%ACPython-Lambda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Locatino">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LOCATINO'S NOTE">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          玩转Python Lambda
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2015-08-03 16:28:01" itemprop="dateCreated datePublished" datetime="2015-08-03T16:28:01+08:00">2015-08-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-08-31 20:12:18" itemprop="dateModified" datetime="2022-08-31T20:12:18+08:00">2022-08-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Memo/" itemprop="url" rel="index"><span itemprop="name">Memo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最近在学习函数式编程，又想顺便学下大名鼎鼎的<strong>Python</strong> ，遂把<strong>The little schemer</strong>里的<strong>scheme</strong>代码全部用<strong>Python</strong>实现了一遍。<br>函数式编程的精髓当然是传说中的<strong>lambda</strong>表达式，本来打算用<strong>Python lambda</strong>实现<strong>scheme</strong>代码，没想到网上一查<strong>API</strong>，却发现<strong>Python lambda</strong>实在是做的弱到不行……不能缩进（一个<strong>lambda</strong>函数只能写在一行），只能用<strong>if…else…</strong>，只能写一条语句等等。</p>
+<blockquote>
+<p>“Why can’t lambda expressions contain statements?</p>
+</blockquote>
+<blockquote>
+<p>Python lambda expressions cannot contain statements because Python’s syntactic framework can’t handle statements nested inside expressions. However, in Python, this is not a serious problem. Unlike lambda forms in other languages, where they add functionality, Python lambdas are only a shorthand notation if you’re too lazy to define a function.</p>
+</blockquote>
+<blockquote>
+<p>Functions are already first class objects in Python, and can be declared in a local scope. Therefore the only advantage of using a lambda instead of a locally-defined function is that you don’t need to invent a name for the function – but that’s just a local variable to which the function object (which is exactly the same type of object that a lambda expression yields) is assigned!”</p>
+</blockquote>
+<p>为啥<strong>lambda</strong>表达式不能包含语句？</p>
+<p>以上是<strong>Python</strong>官方<strong>FAQ</strong>给出的答复：<strong>lambda</strong>表达式就是给你偷懒少打几个字用的，不支持在语句中嵌套表达式。</p>
+<p>基本上<strong>Python Lambda</strong>就应用在以下场景：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f = lambda x, y: x + y</span><br><span class="line">g = lambda x: x + 1</span><br><span class="line"></span><br><span class="line">print(f(1, 2))</span><br><span class="line">print(g(1))</span><br></pre></td></tr></table></figure>
+<p>这匿名函数还tm有个名字。<br>或者你可以节约名字:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print((lambda x, y: x + y)(1, 2))</span><br><span class="line">print((lambda x: x + 1)(1))</span><br></pre></td></tr></table></figure>
+<p>是不是觉得还不如这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(1 + 2)</span><br><span class="line">print(1 + 1)</span><br></pre></td></tr></table></figure>
+<p>不得不说<strong>Python lambda</strong>简直是鸡肋。</p>
+<p>但是，你注意到<strong>Python lambda</strong>支持<strong>if…else…</strong>语句了吗，<strong>scheme</strong>也只有<strong>cond…else</strong>这一种控制语句，却是非常优美的函数式<strong>PL</strong>。<br>所以我试着用<strong>if…else…</strong>来搞点名堂。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lambda x: True if x % 2 == 0 else False</span><br></pre></td></tr></table></figure>
+<p>上面的函数判断一个数是不是偶数，其中<strong>if…else…</strong>是<strong>Python lambda</strong>的标准用法。<br>冒号后面接返回值<strong>return-expression</strong>，接着是该返回值的条件<strong>cond-expression</strong>，接着<strong>else</strong>，然后是<strong>else</strong>的返回值。<br><strong>Python lambda</strong>总共以下2种写法，一种是不含<strong>if…else…</strong>的，一种是包含<strong>if…else…</strong>的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lambda &lt;args&gt;: &lt;return-expression&gt;</span><br><span class="line">lambda &lt;args&gt;: &lt;return-expression&gt; if &lt;cond-expression&gt; else &lt;return-expression&gt;</span><br></pre></td></tr></table></figure>
+<p>第二条语句的**”&lt; return-expression &gt; if &lt; cond-expression &gt; else &lt; return-expression &gt;”** 整体也是一个<strong>return-expression</strong>。<br>所以我们可以在<strong>else</strong>后的<strong>return-expression</strong>中嵌套<strong>return-expression</strong>来完成复杂的条件判断语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lambda &lt;args&gt;: &lt;return-expression&gt; if &lt;cond-expression&gt; else (&lt;return-expression&gt; if &lt;cond-expression&gt; else &lt;return-expression&gt;)</span><br></pre></td></tr></table></figure>
+<p>如果想要在匿名函数中做一些除了<strong>return-expression</strong>，其他事情（比如说<strong>print()<strong>）,应该怎么写？<br>确实不太好写，不过我还是想出了一个非常</strong>投机取巧</strong>的办法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lambda x: True if x % 2 == 0 and print(x) == None else x&quot;)</span><br></pre></td></tr></table></figure>
+<p>上面这个函数不仅返回了<strong>x</strong>的值，并且还打印了<strong>x</strong>，这里我把需要执行的语句(<strong>print()</strong>)转换成了逻辑表达式，而且是一个永远为真的表达式，它一定会执行，并且对业务的逻辑判断没有影响。<br>前提是你必须准确的知道需要执行的语句的返回值，才能写出永远为真的表达式。再写一个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lambda x, l: l if l.insert(0,x) == None else l</span><br></pre></td></tr></table></figure>
+<p>上面这个函数把元素<strong>x</strong>插入到<strong>l</strong>的头部，并返回<strong>l</strong>。<br>通过这种<strong>投机取巧</strong>的办法我们可以大大扩充<strong>Python lambda</strong>的功能。</p>
+<p><strong>Python lambda</strong>还可以返回异常：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lambda x: TypeError(&quot;x is zero.&quot;) if x == 0 else 5/x</span><br></pre></td></tr></table></figure>
+
+<p>那么迭代（循环）怎么写？<br>迭代确实是一个难题，<strong>scheme</strong>这样没有迭代的语句是怎么实现迭代的？递归。<br>首先我们先用常规函数的递归实现迭代：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#求和递归版本</span><br><span class="line">def sum_recur(l):</span><br><span class="line">if len(l) == 0:</span><br><span class="line">return 0</span><br><span class="line">else:</span><br><span class="line">return l[0] + sum_recur(l[1:])</span><br><span class="line"></span><br><span class="line">#求和迭代版本</span><br><span class="line">def sum_iter(l):</span><br><span class="line">sum = 0</span><br><span class="line">for i in l:</span><br><span class="line">sum += i</span><br><span class="line">return sum</span><br></pre></td></tr></table></figure>
+<p>以上2个函数均实现了<strong>list l</strong>中元素求和，功能上是等价的。</p>
+<p>但是匿名函数要递归调用自身难度很高。<br>以下可能有点高能，初学者慎入。<br>首先要知道，<strong>lambda</strong>表达式也是一个<strong>return-expression</strong>。所以我们还可以在<strong>lambda</strong>中返回<strong>lambda</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lambda &lt;args&gt;: lambda &lt;args&gt;: &lt;return-expression&gt;</span><br></pre></td></tr></table></figure>
+<p>先看看下面这个函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def sum(f):</span><br><span class="line">return lambda l:0 if len(l) == 0 else l[0] + f(f)(l[1:])</span><br><span class="line"></span><br><span class="line">print(sum(sum)([1,2]))</span><br></pre></td></tr></table></figure>
+<p>这个函数接受一个自身作为参数，返回值是一个求和函数，也就是实际的递归本体，即<strong>sum(sum) &#x3D; lambda l:0 if len(l) &#x3D;&#x3D; 0 else l[0] + sum(sum)(l[1:])</strong>,如此实现递归调用自身。<br>我们先把<strong>sum(f)<strong>转换成</strong>lambda</strong>函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def sum(f):</span><br><span class="line">return lambda l:0 if len(l) == 0 else l[0] + f(f)(l[1:])</span><br><span class="line"></span><br><span class="line">lambda f: lambda l:0 if len(l) == 0 else l[0] + f(f)(l[1:])</span><br></pre></td></tr></table></figure>
+<p>上述2个函数式功能是等价的,返回值都相同，只是一个有名字而已，匿名函数没有名字如何调用自身？也是通过函数的参数，并且直接使用自身的定义，所以我们可以令**sum(sum)**为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum(lambda f: lambda l:0 if len(l) == 0 else l[0] + f(f)(l[1:]))</span><br><span class="line">#第二个sum，也就是作为参数的sum已被等价的lambda替换，</span><br><span class="line">#现在我们再来替换第一个sum</span><br><span class="line">(lambda f: lambda l:0 if len(l) == 0 else l[0] + f(f)(l[1:])) (lambda f: lambda l:0 if len(l) == 0 else l[0] + f(f)(l[1:]))</span><br></pre></td></tr></table></figure>
+<p>这就完成了匿名函数递归调用自身。测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g = (lambda f: lambda l: 0 if len(l) == 0 else l[0] + f(f)(l[1:])) (lambda f: lambda l: 0 if len(l) == 0 else l[0] + f(f)(l[1:]))</span><br><span class="line"></span><br><span class="line">print(g([1,2,3]))</span><br></pre></td></tr></table></figure>
+<p>接下来优化一下~</p>
+<p>注意到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#f(f)(x)</span><br><span class="line">#等价于</span><br><span class="line">#lambda x: f(f)(x)</span><br><span class="line"></span><br><span class="line">#那么我们可以把上面出现的f(f)都用参数替换，然后传一个lambda x: f(f)(x)作为参数即可</span><br><span class="line">g = (lambda f: lambda l: 0 if len(l) == 0 else l[0] + (lambda x: f(f)(x))(l[1:])) (lambda f: lambda l: 0 if len(l) == 0 else l[0] + (lambda x: f(f)(x))(l[1:]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">g = (lambda y: (lambda f:lambda l: 0 if len(l) == 0 else l[0] + f(l[1:]))(lambda x: y(y)(x)))(lambda y: (lambda f:lambda l: 0 if len(l) == 0 else l[0] + f(l[1:]))(lambda x: y(y)(x)))</span><br><span class="line">#注意：</span><br><span class="line">lambda f:lambda l: 0 if len(l) == 0 else l[0] + f(l[1:])</span><br><span class="line">#此函数就是真正的业务递归过程，其他结构均是辅助，我们可以提取出来</span><br><span class="line">job = lambda f:lambda l: 0 if len(l) == 0 else l[0] + f(l[1:])</span><br><span class="line"></span><br><span class="line">g = (lambda y: job(lambda x: y(y)(x)))(lambda y: job(lambda x: y(y)(x)))</span><br><span class="line"></span><br><span class="line">print(g([1,2,3]))</span><br></pre></td></tr></table></figure>
+<p>这个<strong>g</strong>就是传说中的上古神器<strong>Y-Combinator</strong>！它就是一个通用的匿名函数递归公式。</p>
+<p>至此，我们已经把<strong>Python lambda</strong>的功能扩充的基本和普通函数差不多了（额，可能还差一点）。<br>而且所有函数全部一行完成，然而并没有什么卵用。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Functional-Programming/" rel="tag"># Functional Programming</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Locatino</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Locatino</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

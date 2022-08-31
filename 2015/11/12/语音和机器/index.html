@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="不知道从什么时候开始，你开始兢兢业业地工作，你开始对每一件遗憾的事物释怀，你开始觉得现在的生活也还不错。但是你就是不能满血，始终笼罩着一层无法驱散的惶惶不安，始终肩负着某些摆脱不了的沉重，好像总有一些不可知的事情会发生，没人给你兜底，也没有能够应对的踏实。虽然每天都能正常入眠，却不能真正休息，总有一些疲惫常驻后台。不知道是从哪里开始出了问题，但你就是累了。你开始想象平行世界的另一个你过着怎样的生活">
+  <meta name="description" content="计算模型大致可以分为两类，λ演算和其他…好吧，也许Post的产生式系统和Herbrand-Goedel等式属于前者，但是毋庸置疑所有总所周知并且被广泛接受的模型比如图灵机，RAM和λ演算可不是一类的。Guy Blelloch将这类差异划分为语言和机器。基于机器的模型全部是在无界内存下的有限控制理论基础上讨论的。它依靠程序员去管理内存，实现一切结构，并且没有记号，没有解释器这样的机制在运行时改变程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《白日梦想家》：幻想人生的补完计划">
-<meta property="og:url" content="http://example.com/2022/08/31/%E3%80%8A%E7%99%BD%E6%97%A5%E6%A2%A6%E6%83%B3%E5%AE%B6%E3%80%8B%EF%BC%9A%E5%B9%BB%E6%83%B3%E4%BA%BA%E7%94%9F%E7%9A%84%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/index.html">
+<meta property="og:title" content="语音和机器">
+<meta property="og:url" content="http://example.com/2015/11/12/%E8%AF%AD%E9%9F%B3%E5%92%8C%E6%9C%BA%E5%99%A8/index.html">
 <meta property="og:site_name" content="LOCATINO&#39;S NOTE">
-<meta property="og:description" content="不知道从什么时候开始，你开始兢兢业业地工作，你开始对每一件遗憾的事物释怀，你开始觉得现在的生活也还不错。但是你就是不能满血，始终笼罩着一层无法驱散的惶惶不安，始终肩负着某些摆脱不了的沉重，好像总有一些不可知的事情会发生，没人给你兜底，也没有能够应对的踏实。虽然每天都能正常入眠，却不能真正休息，总有一些疲惫常驻后台。不知道是从哪里开始出了问题，但你就是累了。你开始想象平行世界的另一个你过着怎样的生活">
+<meta property="og:description" content="计算模型大致可以分为两类，λ演算和其他…好吧，也许Post的产生式系统和Herbrand-Goedel等式属于前者，但是毋庸置疑所有总所周知并且被广泛接受的模型比如图灵机，RAM和λ演算可不是一类的。Guy Blelloch将这类差异划分为语言和机器。基于机器的模型全部是在无界内存下的有限控制理论基础上讨论的。它依靠程序员去管理内存，实现一切结构，并且没有记号，没有解释器这样的机制在运行时改变程序">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2022-08-31T11:12:30.000Z">
-<meta property="article:modified_time" content="2022-08-31T12:17:40.940Z">
+<meta property="article:published_time" content="2015-11-12T03:06:12.000Z">
+<meta property="article:modified_time" content="2022-08-31T12:11:51.634Z">
 <meta property="article:author" content="Locatino">
-<meta property="article:tag" content="Movie">
+<meta property="article:tag" content="Programming">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/08/31/%E3%80%8A%E7%99%BD%E6%97%A5%E6%A2%A6%E6%83%B3%E5%AE%B6%E3%80%8B%EF%BC%9A%E5%B9%BB%E6%83%B3%E4%BA%BA%E7%94%9F%E7%9A%84%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/">
+<link rel="canonical" href="http://example.com/2015/11/12/%E8%AF%AD%E9%9F%B3%E5%92%8C%E6%9C%BA%E5%99%A8/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>《白日梦想家》：幻想人生的补完计划 | LOCATINO'S NOTE</title>
+  <title>语音和机器 | LOCATINO'S NOTE</title>
   
 
 
@@ -166,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/31/%E3%80%8A%E7%99%BD%E6%97%A5%E6%A2%A6%E6%83%B3%E5%AE%B6%E3%80%8B%EF%BC%9A%E5%B9%BB%E6%83%B3%E4%BA%BA%E7%94%9F%E7%9A%84%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2015/11/12/%E8%AF%AD%E9%9F%B3%E5%92%8C%E6%9C%BA%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -179,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          《白日梦想家》：幻想人生的补完计划
+          语音和机器
         </h1>
 
         <div class="post-meta">
@@ -188,17 +188,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2022-08-31 19:12:30 / 修改時間：20:17:40" itemprop="dateCreated datePublished" datetime="2022-08-31T19:12:30+08:00">2022-08-31</time>
+              <time title="創建時間：2015-11-12 11:06:12" itemprop="dateCreated datePublished" datetime="2015-11-12T11:06:12+08:00">2015-11-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-08-31 20:11:51" itemprop="dateModified" datetime="2022-08-31T20:11:51+08:00">2022-08-31</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NONSENSE/" itemprop="url" rel="index"><span itemprop="name">NONSENSE</span></a>
+                  <a href="/categories/Translation/" itemprop="url" rel="index"><span itemprop="name">Translation</span></a>
                 </span>
             </span>
 
@@ -213,24 +219,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>不知道从什么时候开始，你开始兢兢业业地工作，你开始对每一件遗憾的事物释怀，你开始觉得现在的生活也还不错。<br>但是你就是不能满血，始终笼罩着一层无法驱散的惶惶不安，始终肩负着某些摆脱不了的沉重，好像总有一些不可知的事情会发生，没人给你兜底，也没有能够应对的踏实。虽然每天都能正常入眠，却不能真正休息，总有一些疲惫常驻后台。<br>不知道是从哪里开始出了问题，但你就是累了。<br>你开始想象平行世界的另一个你过着怎样的生活。</p>
-<h3 id="What-is-LIFE"><a href="#What-is-LIFE" class="headerlink" title="What is LIFE ?"></a>What is LIFE ?</h3><p>影片中有一处男主在格陵兰岛租车时面临的选择：红色或者蓝色，明显是致敬《黑客帝国》中救世主尼奥对于红蓝药丸的选择。</p>
-<p>当感觉生活甚至世界有些不对的时候，你面前有两个药丸，也就是两种选择，</p>
-<p>红色告诉你所想要的真相但真相或许是你难以接受的，蓝色药丸吃下便忘记这一切第二天像往常一样起床但将永远不会接触到真相。</p>
-<p>正如日常生活就像一个牢笼，困在里面也不自知，当然也不会想逃出来。</p>
-<p>男主选择租下了红色的汽车，踏上旅程，告别了幻想，补完了自己的的灵魂。</p>
-<p>我们每天重复着昨天的生活，随着惯性推进每一步，几乎丧失思考的空间和时间，人生匆匆忙忙，可是又毫无意义。</p>
-<p>好像想要寻找什么打破这种真实到不真实的生活，急需一个突破口让某种能量冲出体内。</p>
-<p>男主义无反顾地跳上了直升机，见过了格陵兰的鲨鱼、冰岛的火山、喜马拉雅的雪豹，</p>
-<p>人生即是带着自己不甘堕落的心，去绽放不一样的生命之花。</p>
-<p><strong>大多数人按照我们所安排的路线生活，害怕探索其它路线，但也会有一些人，他们并不满足于被设定的生活轨迹，冲破我们设置的重重阻碍，意识到自由意志是天赐之物的人，才明白只有在奋力抗争后才知道如何善用之。</strong></p>
-<pre><code>To see the world, things dangerous to come to.
-To see behind walls.
-To draw closer.
-To find each other and to feel.
-That&#39;s the purpose of LIFE.
-</code></pre>
-<p><em>你是否也曾有那么恍惚一刻做着虚幻的白日梦想？</em></p>
+        <p>计算模型大致可以分为两类，λ演算和其他…好吧，也许Post的产生式系统和Herbrand-Goedel等式属于前者，但是毋庸置疑所有总所周知并且被广泛接受的模型比如图灵机，RAM和λ演算可不是一类的。Guy Blelloch将这类差异划分为语言和机器。基于机器的模型全部是在无界内存下的有限控制理论基础上讨论的。它依靠程序员去管理内存，实现一切结构，并且没有记号，没有解释器这样的机制在运行时改变程序；机器模型全部是非冯诺依曼机，因为它们没有存储程序的思想。基于语言的模型，相较之下，没有把程序和数据分开，并提供建立真实语言的基础，直接且没有编码。这似乎是一个λ演算的决定性优势：尽管机器模型出现在我们教材的前几章，但是他们本质上没有实际重要性，而λ演算对编程和逻辑系统的机械化来说是直接有用的。但现在机器模型仍然处于主宰地位，特别是算法和复杂度的领域，λ演算却作为冷门怪异的知识仅仅被计算机科学家的一小部分人研究。这是怎么回事？</p>
+<p>遇到这个问题时，我的同事（至少在理论这边）认为这个问题一点意思都没有，回避了这个问题，因为“所有计算模型都需要多项式时间”，so who care? 好吧，如果你的工作在多项式因子的复杂度完成，并且你只关心对自然数（或者其他有限对象）的计算，那我猜这问题确实无所谓。你把某个问题算了一遍，对于那些利益相关的对象是如何在某个模型上表现的毫不关心，那细节的确无所谓。<br>但是明显地这些模型有所谓，事实上，说这话的同事在任何情况下都不会考虑经典的机器模型作为他工作的基础！毫无疑问，如果这些模型都是等价的话，选什么没关系，所以我们都可以选择λ演算，对吧？好吧，确实是这样。显而易见，有些模型是比其他模型更合适的！怎么会这样？</p>
+<p>一个原因是许多工作并不是取决于多项式因子的（有人可能更认为，大部分都不是的）。所以对于这些目的，模型是有所谓的。另一方面，没有人在实际工作中用“正式的”模型。没人用图灵机码去描述算法，甚至RAM代码也没有用（Knuth是个例外）。反而，他们用的是类Algol语言，或者类C语言，或者类似的命令式编程符号。也就是说，他们用的是编程语言，而不是机器！他们当然这么做。但那又为什么强调机器模型呢？他们写的那些语言意味着什么？</p>
+<p>答案是这些语言是由描述这样那样的类Algol语言如何对应于这样那样的RAM代码或者图灵机码的解释器定义的。这种表述虽不正式，但已足够准确使人明白。关键是，你推理的不是你写的代码，而是编译器写的代码，因为正式来讲目标代码才是“真正的”代码，伪代码只是提供一个方便。所以在工作中，你脑子里必须有一个编译器：它对一切你写的代码都清楚明白，知道如何翻译成，比如RAM代码。这并不是太难，因为伪代码简单，简单到你可以直接在脑子里编译它。这种方式不错，但是会逐渐出现问题，因为它约束了我们表达算法的语言从而限制了我们能够方便表达和分析的算法的范围。</p>
+<p>那为什么坚持使用这样麻烦的方式呢？一个原因是，传统。我的导师用它，所以我也用它。或者，如果你想要发论文，你最好用一种评审熟悉的风格写。<br>一个更实际的原因是，机器模型是描述计算开销的基础。计算的一“步”就是机器的一步，我们通过估算解决同一问题算法的步数来比较算法（取决于乘法因子，大部分情况下）。只要我们能够“手工编译”类Algol语言到机器码，我们就可以给一个比汇编语言高级的语言赋一个开销，还可以对各类算法做合理的比较。这种方法良好的满足了我们的需求，但是现在它开始没那么管用了（并行是一个原因，但还有许多其他理由）。</p>
+<p>有一个替代选项，为我们书写的语言提供了开销语义，并且直接地在这个基础上开展我们的分析，不用迎合编译器或者依赖机器。简而言之我们采用了计算的语言模型，而非机器模型，生活更美好！表达算法有更多的方式，还简化了分析算法的方法。</p>
+<p>要用这种方式我们需要我们使用的语言一个开销语义。这也就是λ演算的优势，因为它是描述计算的语言模型的典型例子。简单来说，λ演算的右箭头标记表示一步推导，写作M→M’，表示M程序经过一步计算之后的结果为M’程序。执行过程直接由我们写出，并且模型还为计算步骤提供了良定义的标记，我们可以数出来获取程序的时间复杂度。数十年的经验表明这种方法扩展到了真实语言。</p>
+<p>有什么缺点呢？我个人找不出什么缺点。我一直很困惑，觉得λ演算应该在算法圈子里被接受。正如任何机器模型都被当做完美的计算基础，而业界的行为都显明机器模型对实际完成的工作有很大的限制！<br>唯一的原因我觉得，除去强大的社会影响，就是停滞不前，还未发现λ演算里关于开销的概念对算法分析的适合。（一个研究员最近告诉我“你可以塞一头大象在β推导里！”，然而他还是没法解释我哪错了。）一种验证这个观点的方法就是，定义出一个λ演算到RAM代码的编译器，确保λ演算里的抽象步骤能被RAM在常量时间里实现（不考虑输入大小，只考虑静态程序的大小）。Blelloch和Greiner在90年代初已经精确的完成了这项分析。详见<a target="_blank" rel="noopener" href="http://www.cs.cmu.edu/~guyb/">Guy’s web page</a>。</p>
+<p>之后的博文里我会深入的考察这些思想，并且表明（通过检查Blelloch的工作）λ演算不仅可以作为一个串行算法的良好模型，对并行算法也是一样！而且我们可以轻松地把模型扩展为具有重要抽象能力的语言比如高阶函数或者不用优化就能表达和分析算法。</p>
+<hr>
+<p>翻译 by locatino<br><a target="_blank" rel="noopener" href="https://existentialtype.wordpress.com/2011/03/16/languages-and-machines/">原文</a></p>
 
     </div>
 
@@ -240,7 +239,7 @@ That&#39;s the purpose of LIFE.
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Movie/" rel="tag"># Movie</a>
+              <a href="/tags/Programming/" rel="tag"># Programming</a>
           </div>
 
         
@@ -304,7 +303,6 @@ That&#39;s the purpose of LIFE.
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-LIFE"><span class="nav-number">1.</span> <span class="nav-text">What is LIFE ?</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
