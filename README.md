@@ -1,2 +1,2 @@
 # locatino.github.io
-nodejs-hexo
+nodejs-hexo1
